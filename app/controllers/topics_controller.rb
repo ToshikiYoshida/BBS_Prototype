@@ -1,13 +1,13 @@
 class TopicsController < ApplicationController
   def index
-    @topics = Topic.all
+    @topics = Topic.all.order(updated_at: "DESC")
     @newTopic = Topic.new
   end
 
   def show
     @topic = Topic.find(params[:id])
     @newpost = Post.new(:topic_id => params[:id])
-    @posts = Post.where(topic_id: params[:id])
+    @posts = @topic.posts
   end
 
   def create

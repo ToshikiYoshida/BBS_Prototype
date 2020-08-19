@@ -1,16 +1,26 @@
-<h1>Topics</h1>
-<u1>
-  <% @topics.each do |topic| %>
-    <li>
-      <%= link_to topic.title, topics_show_path(topic.id) %>
-      <%= link_to '[Delete]', topic_delete_path(topic.id), method: :delete, data: {confirm: "Delete OK?"} %>
-    </li>
-  <% end %>
-</u1>
+<div>
+  <u1 class="topics">
+    <% @topics.each do |topic| %>
+      <li>
+        <%= link_to topic.title,  topics_show_path(topic.id) %>
+        (<%= topic.posts.count %>)
+      </li>
+    <% end %>
+  </u1>
+</div>
 
-<h1>Add Topic</h1>
-<%= form_for @newTopic, :url => {:action => 'create'} do |f| %>
-  <%= f.text_field :title %>
-  <%= f.submit %>
-<% end %>
+<div class="posts">
+  <h3>トピックを作成</h3>
+  <%= form_for @newTopic, :url => {:action => 'create'} do |f| %>
+    <div class="form-group">
+      <label class="title">タイトル</label>
+      <div class="row">
+        <div class="col-md-4">
+          <%= f.text_field :title, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+    <%= f.submit "作成"%>
+  <% end %>
+</div>
 

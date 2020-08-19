@@ -1,0 +1,7 @@
+<li id="post-<%= post.id %>">
+  <span class="name"><%= post.name %></span>
+  <span class="body"><%= post.body %></span>
+  <div class="timestamp">
+    <%= post.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+  </div>
+</li>
