@@ -2,20 +2,18 @@
 <div class="topics">
   <div class="title"><%= @topic.title %> (<%= @topic.posts.count %>)</div>
 </div>
+
+<div class="col-md-8">
   <ol class="posts">
     <%= render @posts %>
   </ol>
+</div>
 
-<div>
-  <h3>コメントを投稿する</h3>
+<div class="col-md-4">
   <%= form_for @newpost, :url => post_create_path do |f| %>
     <div class="form-group">
       <label for="name">名前</label>
-      <div class="row">
-        <div class="col-md-4">
-          <%= f.text_field :name, class: "form-control" %>
-        </div>
-      </div>
+        <%= f.text_field :name, class: "form-control" %>
     </div>
     <div class="form-group">
       <label for="body">コメント</label>

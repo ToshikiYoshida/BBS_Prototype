@@ -1,4 +1,5 @@
-<div>
+<div class="col-md-7">
+  <h3>トピック一覧</h3>
   <u1 class="topics">
     <% @topics.each do |topic| %>
       <li>
@@ -9,16 +10,12 @@
   </u1>
 </div>
 
-<div class="posts">
+<div class="col-md-5 posts">
   <h3>トピックを作成</h3>
   <%= form_for @newTopic, :url => {:action => 'create'} do |f| %>
     <div class="form-group">
       <label class="title">タイトル</label>
-      <div class="row">
-        <div class="col-md-4">
-          <%= f.text_field :title, class: "form-control" %>
-        </div>
-      </div>
+        <%= f.text_field :title, class: "form-control" %>
     </div>
     <%= f.submit "作成"%>
   <% end %>
